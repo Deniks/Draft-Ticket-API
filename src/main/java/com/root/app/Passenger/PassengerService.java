@@ -23,7 +23,7 @@ public class PassengerService {
     public Optional<Passenger> getPassenger(Long passengerId) {
         boolean exists = passengerRepository.existsById(passengerId);
         if (!exists) {
-            throw new IllegalStateException("Draft ticket with Id - " + passengerId + "does not exist");
+            throw new IllegalStateException("Passenger with id - " + passengerId + "does not exist");
         }
         return passengerRepository.findById(passengerId);
     }
