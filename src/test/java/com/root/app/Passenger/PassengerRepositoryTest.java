@@ -25,12 +25,12 @@ class PassengerRepositoryTest {
     @Test
     void findPassengerById() {
         assertEquals(5, 2+3);
-//        Long id = 3L;
-//        Passenger passenger = new Passenger();
-//        underTest.save(passenger);
-//        boolean expected = underTest.findPassengerById(id).isPresent();
-//
-//        assertTrue(expected);
+        Long id = 3L;
+        Passenger passenger = new Passenger();
+        underTest.save(passenger);
+        boolean expected = underTest.findPassengerById(id).isPresent();
+
+        assertTrue(expected);
     }
 
     @DisplayName("Passenger should not be found by Id")
