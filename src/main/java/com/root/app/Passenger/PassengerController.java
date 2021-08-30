@@ -26,8 +26,8 @@ public class PassengerController {
 
 
     @PostMapping
-    public void registerNewPassenger(@RequestParam(value = "luggageCount") int luggageCount, @RequestParam(value = "isAdult") boolean isAdult) {
-        passengerService.addNewPassenger(luggageCount, isAdult);
+    public void registerNewPassenger(@RequestBody PassengerRequest passengerRequest) {
+        passengerService.addNewPassenger(passengerRequest);
     }
 
     @DeleteMapping(path = "{passengerId}")

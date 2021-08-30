@@ -42,16 +42,20 @@ class PassengerServiceTest {
     @DisplayName("Can get single passenger")
     @Test
     void getPassenger() {
-        Long id = 5L;
+        Long id = 3L;
         underTest.getPassenger(id);
-        verify(passengerRepository).getOne(id);
+        verify(passengerRepository).findById(id);
     }
 
     @DisplayName("Can add new passenger")
     @Test
     void addNewPassenger() {
+        final int luggageCount = 4;
+        final boolean isAdult = false;
+        PassengerRequest passengerRequest = new PassengerRequest(luggageCount, isAdult);
+
         Passenger passenger = new Passenger();
-        underTest.addNewPassenger(3, false);
+        underTest.addNewPassenger(passengerRequest);
         ArgumentCaptor<Passenger> passengerArgumentCaptor = ArgumentCaptor.forClass(Passenger.class);
         verify(passengerRepository).save(passengerArgumentCaptor.capture());
     }

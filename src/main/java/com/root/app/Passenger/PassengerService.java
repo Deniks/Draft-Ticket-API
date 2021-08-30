@@ -23,13 +23,13 @@ public class PassengerService {
     public Optional<Passenger> getPassenger(Long passengerId) {
         boolean exists = passengerRepository.existsById(passengerId);
         if (!exists) {
-            throw new IllegalStateException("Passenger with id - " + passengerId + "does not exist");
+            throw new IllegalStateException("Passenger with id - " + passengerId + " does not exist");
         }
         return passengerRepository.findById(passengerId);
     }
 
-    public void addNewPassenger(int luggageCount, boolean isAdult) {
-        Passenger passenger = new Passenger(luggageCount, isAdult);
+    public void addNewPassenger(PassengerRequest passengerRequest) {
+        Passenger passenger = new Passenger(passengerRequest.getLuggageCount(), passengerRequest.isAdult());
         passenger.calculateBill();
         passenger.calculateLuggageCost();
         passenger.calculateTicketPrice();
